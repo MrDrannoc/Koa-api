@@ -1,5 +1,7 @@
 const Router = require('koa-router');
-const router = new Router();
+const router = new Router({
+    prefix: '/api'
+});
 const {CompanyController} = require('../controllers');
 
 //define all your routes

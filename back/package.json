@@ -15,6 +15,7 @@
     "koa": "^2.5.0",
     "koa-parser": "^1.0.4",
     "koa-router": "^7.4.0",
+    "koa-static": "^4.0.2",
     "lodash": "^4.17.5",
     "mysql2": "^1.5.3",
     "sequelize": "^4.37.6"
