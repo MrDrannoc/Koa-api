@@ -26,6 +26,7 @@ module.exports = function (ctx) {
       vueRouterMode: 'hash',
       distDir: '../dist',
       publicPath: '/',
+      htmlFilename: ctx.dev ? '' : 'index.html',
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
