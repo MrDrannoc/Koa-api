@@ -26,8 +26,6 @@
 </style>
 
 <script>
-import axios from 'axios'
-
 export default {
   name: 'PageCompanies',
   data: () => ({
@@ -59,20 +57,20 @@ export default {
     companies: []
   }),
   mounted () {
-    axios.get('/api/companies')
+    this.$axios.get('/api/companies')
       .then((res) => {
         this.companies = res.data
       })
   },
   methods: {
     getCompany: function () {
-      axios.get('/api/companies')
+      this.$axios.get('/api/companies')
         .then((res) => {
           this.companies = res.data
         })
     },
     addCompany: function () {
-      axios.post('/api/companies/', {
+      this.$axios.post('/api/companies/', {
         name: this.company.name,
         city: this.company.city,
         adresse: this.company.adresse
@@ -83,7 +81,7 @@ export default {
         })
     },
     putCompany: function (id, index) {
-      axios.put('/api/companies/' + id, {
+      this.$axios.put('/api/companies/' + id, {
         name: this.companies[index].name,
         city: this.companies[index].city,
         adresse: this.companies[index].adresse
@@ -93,7 +91,7 @@ export default {
         })
     },
     delCompany: function (id) {
-      axios.delete('/api/companies/' + id)
+      this.$axios.delete('/api/companies/' + id)
         .then((res) => {
           this.getCompany()
         })
