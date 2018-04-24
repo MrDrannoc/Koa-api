@@ -59,20 +59,20 @@ export default {
     companies: []
   }),
   mounted () {
-    axios.get('http://localhost:4000/api/companies')
+    axios.get('/api/companies')
       .then((res) => {
         this.companies = res.data
       })
   },
   methods: {
     getCompany: function () {
-      axios.get('http://localhost:4000/api/companies')
+      axios.get('/api/companies')
         .then((res) => {
           this.companies = res.data
         })
     },
     addCompany: function () {
-      axios.post('http://localhost:4000/api/companies/', {
+      axios.post('/api/companies/', {
         name: this.company.name,
         city: this.company.city,
         adresse: this.company.adresse
@@ -83,7 +83,7 @@ export default {
         })
     },
     putCompany: function (id, index) {
-      axios.put('http://localhost:4000/api/companies/' + id, {
+      axios.put('/api/companies/' + id, {
         name: this.companies[index].name,
         city: this.companies[index].city,
         adresse: this.companies[index].adresse
@@ -93,7 +93,7 @@ export default {
         })
     },
     delCompany: function (id) {
-      axios.delete('http://localhost:4000/api/companies/' + id)
+      axios.delete('/api/companies/' + id)
         .then((res) => {
           this.getCompany()
         })

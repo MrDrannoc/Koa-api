@@ -24,6 +24,7 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'hash',
+      distDir: '../dist',
       publicPath: '/',
       // gzip: true,
       // analyze: true,
@@ -41,6 +42,16 @@ module.exports = function (ctx) {
     devServer: {
       // https: true,
       // port: 8080,
+      proxy: {
+        // proxy all requests starting with /api to jsonplaceholder
+        '/api': {
+          target: 'http://localhost:4000/api',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/api': ''
+          }
+        }
+      },
       open: true // opens browser window automatically
     },
     // framework: 'all' --- includes everything; for dev only!

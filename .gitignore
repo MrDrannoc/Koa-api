@@ -1,5 +1,6 @@
 .vscode
 node_modules
+dist
 
 /quasar/.quasar
 /quasar/.DS_Store
