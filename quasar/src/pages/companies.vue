@@ -72,14 +72,12 @@ export default {
         })
     },
     addCompany: function () {
-      console.log(this.company)
       axios.post('http://localhost:4000/api/companies/', {
         name: this.company.name,
         city: this.company.city,
         adresse: this.company.adresse
       })
         .then((res) => {
-          console.log(res)
           this.getCompany()
           this.company = {}
         })
@@ -91,14 +89,12 @@ export default {
         adresse: this.companies[index].adresse
       })
         .then((res) => {
-          console.log(res)
           this.getCompany()
         })
     },
     delCompany: function (id) {
       axios.delete('http://localhost:4000/api/companies/' + id)
         .then((res) => {
-          console.log(res)
           this.getCompany()
         })
     }

@@ -29,7 +29,6 @@ module.exports = {
     async findOne(ctx) {
 
         try {
-            console.log(ctx.params.id)
             const company = await ctx.db.Company.findOne({
                 where: { id: ctx.params.id }
             });

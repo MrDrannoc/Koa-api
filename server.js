@@ -9,7 +9,6 @@ const router = require('./routes');
 
 const app = new Koa();
 
-console.log(process.env)
 if (process.env.npm_lifecycle_event === "start") {
     app.use(serve('./quasar/dist/spa-mat'));
 }
