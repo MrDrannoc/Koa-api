@@ -20,6 +20,7 @@
           Quasar App
           <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
         </q-toolbar-title>
+        <router-link to="/companies">Companies</router-link>
       </q-toolbar>
     </q-layout-header>
 

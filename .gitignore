@@ -1,22 +1,22 @@
-/back/.vscode
-/back/node_modules
+.vscode
+node_modules
 
-/front/.quasar
-/front/.DS_Store
-/front/.thumbs.db
-/front/node_modules
-/front/dist
-/front/src-cordova/platforms
-/front/src-cordova/plugins
-/front/src-cordova/www
-/front/npm-debug.log*
-/front/yarn-debug.log*
-/front/yarn-error.log*
+/quasar/.quasar
+/quasar/.DS_Store
+/quasar/.thumbs.db
+/quasar/node_modules
+/quasar/dist
+/quasar/src-cordova/platforms
+/quasar/src-cordova/plugins
+/quasar/src-cordova/www
+/quasar/npm-debug.log*
+/quasar/yarn-debug.log*
+/quasar/yarn-error.log*
 
 # Editor directories and files
-/front/.idea
-/front/.vscode
-/front/*.suo
-/front/*.ntvs*
-/front/*.njsproj
-/front/*.sln
+/quasar/.idea
+/quasar/.vscode
+/quasar/*.suo
+/quasar/*.ntvs*
+/quasar/*.njsproj
+/quasar/*.sln

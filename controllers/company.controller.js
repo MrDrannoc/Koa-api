@@ -6,7 +6,7 @@ module.exports = {
             ctx.body = await ctx.db.Company.create({
                 name: ctx.request.body.name,
                 city: ctx.request.body.city,
-                adress: ctx.request.body.adress
+                adresse: ctx.request.body.adresse
             });
 
         }
@@ -65,7 +65,7 @@ module.exports = {
             const results = await ctx.db.Company.update({
                 name: ctx.request.body.name,
                 city: ctx.request.body.city,
-                adress: ctx.request.body.adress,
+                adresse: ctx.request.body.adresse,
             }, {
                 where: { id: ctx.params.id }
             });
