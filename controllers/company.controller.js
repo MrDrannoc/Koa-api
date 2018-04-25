@@ -6,7 +6,7 @@ module.exports = {
             ctx.body = await ctx.db.Company.create({
                 name: ctx.request.body.name,
                 city: ctx.request.body.city,
-                adress: ctx.request.body.adress
+                adresse: ctx.request.body.adresse
             });
 
         }
@@ -18,7 +18,13 @@ module.exports = {
     async find(ctx) {
 
         try {
-            ctx.body = await ctx.db.Company.findAll({});
+            ctx.body = await ctx.db.Company.findAll({
+                include: [
+                    {
+                        model: ctx.db.Job
+                    }
+                ]
+            });
 
         }
         catch (err) {
@@ -65,7 +71,7 @@ module.exports = {
             const results = await ctx.db.Company.update({
                 name: ctx.request.body.name,
                 city: ctx.request.body.city,
-                adress: ctx.request.body.adress,
+                adresse: ctx.request.body.adresse,
             }, {
                 where: { id: ctx.params.id }
             });
