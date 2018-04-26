@@ -1,5 +1,6 @@
-const CompanyController = require('./company.controller');
+const TodolistController = require('./todolist.controller');
+
 
 module.exports = {
-    CompanyController
+    TodolistController
 }

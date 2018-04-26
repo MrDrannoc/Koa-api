@@ -8,19 +8,18 @@ const router = require('./routes');
 
 const app = new Koa();
 
-if (process.env.npm_lifecycle_event === "start") {
-    app.use(serve('./dist'));
-}
 
 const PORT = 4000;
 
 const db = require('./models');
 db.sequelize.sync()
-    .then(() => console.log('models synced!'))
-    .catch(err => console.log(err));
+.then(() => console.log('models synced!'))
+.catch(err => console.log(err));
 
 app.context.db = db;
 app.use(bodyParser());
+
+app.use(serve(`${__dirname}/dist`));
 app.use(router.routes())
 
 app.listen(PORT);
