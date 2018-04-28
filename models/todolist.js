@@ -4,8 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     complete: DataTypes.BOOLEAN
   }, {});
-  Todolist.associate = function(models) {
-    // associations can be defined here
+  Todolist.associate = (models) => {
+    Todolist.belongsTo(models.User, {
+      allowNull: false
+    });
   };
   return Todolist;
 };

@@ -39,6 +39,7 @@ export default {
   },
   methods: {
     logout: function () {
+      this.$q.localStorage.remove('user')
       this.$q.localStorage.remove('token')
       this.$store.dispatch('global/disconnected')
       this.notifyAlertType = 'positive'

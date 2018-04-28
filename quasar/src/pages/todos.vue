@@ -56,25 +56,29 @@
       },
       apiHeader() {
         return this.$store.state.global.apiHeader
-      }
+      },
+      userSession() {
+        return this.$store.state.global.userSession
+      },
     },
     mounted() {
-      this.$axios.get('/api/todolist', this.apiHeader)
+      this.$axios.get('/api/todolistbyuser/' + this.userSession.id, this.apiHeader)
         .then((res) => {
           this.todos = res.data
         })
     },
     methods: {
       getTodos: function() {
-        this.$axios.get('/api/todolist', this.apiHeader)
+        this.$axios.get('/api/todolistbyuser/' + this.userSession.id, this.apiHeader)
           .then((res) => {
             this.todos = res.data
           })
       },
       addTodo: function() {
         this.$axios.post('/api/todolist/', {
-            title: this.todo.title,
-            complete: false
+          title: this.todo.title,
+            complete: false,
+            userId: this.userSession.id
           }, this.apiHeader)
           .then((res) => {
             this.getTodos()
@@ -86,7 +90,8 @@
       putTodo: function(id, index) {
         this.$axios.put('/api/todolist/' + id, {
             title: this.todos[index].title,
-            complete: this.todos[index].complete
+            complete: this.todos[index].complete,
+            userId: this.todos[index].userId
           }, this.apiHeader)
           .then((res) => {
             this.getTodos()

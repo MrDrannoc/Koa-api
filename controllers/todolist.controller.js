@@ -4,7 +4,8 @@ module.exports = {
         try {
             ctx.body = await ctx.db.Todolist.create({
                 title: ctx.request.body.title,
-                complete: ctx.request.body.complete
+                complete: ctx.request.body.complete,
+                UserId: ctx.request.body.userId
             });
 
         }
@@ -17,6 +18,19 @@ module.exports = {
 
         try {
             ctx.body = await ctx.db.Todolist.findAll({});
+
+        }
+        catch (err) {
+            ctx.throw(500, err);
+        }
+    },
+
+    async findAllByUser(ctx) {
+
+        try {
+            ctx.body = await ctx.db.Todolist.findAll({
+                where: { userId: ctx.params.userId }
+            });
 
         }
         catch (err) {
@@ -46,7 +60,8 @@ module.exports = {
         try {
             const results = await ctx.db.Todolist.update({
                 title: ctx.request.body.title,
-                complete: ctx.request.body.complete
+                complete: ctx.request.body.complete,
+                userId: ctx.request.body.userId
             }, {
                     where: { id: ctx.params.id }
                 });

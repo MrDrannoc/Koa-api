@@ -49,13 +49,17 @@
       login: function() {
         this.$axios.post('/api/login/', this.userLogin)
           .then((res) => {
+            var user = {}
             var token = res.data.token
+            user.id = res.data.userId
+            user.email = res.data.email
+            this.$q.localStorage.set('user', user)
             this.$q.localStorage.set('token', token)
-            this.$store.dispatch('global/addUser', this.userLogin)
+            this.$store.dispatch('global/addUser', user)
             this.$store.dispatch('global/addToken', token)
             this.$store.dispatch('global/connected')
             this.notifyAlertType = 'positive'
-            this.notifyAlertMessage = `Bienvenue ${this.userLogin.email}`
+            this.notifyAlertMessage = `Bienvenue ${user.email}`
             setTimeout(() => {
               this.$router.push('todos')
             }, 2000);

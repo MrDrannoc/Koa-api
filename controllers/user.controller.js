@@ -55,7 +55,7 @@ module.exports = {
                     }
                 }, '1 day');
 
-                ctx.body = {token};
+                ctx.body = {userId: user.id, email: user.email , token};
 
             } else {
                 ctx.throw(500, 'Mot de passe invalide');
