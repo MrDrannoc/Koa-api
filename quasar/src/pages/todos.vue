@@ -42,17 +42,19 @@
         sortable: true
       }],
       todo: {},
-      todos: []
+      todos: [],
+      notifyAlertType: '',
+      notifyAlertMessage: ''
     }),
     computed: {
-    // récuperer du state du store
-      token () {
+      // récuperer du state du store
+      token() {
         return this.$store.state.global.token
       },
-      connected () {
+      connected() {
         return this.$store.state.global.connected
       },
-      apiHeader () {
+      apiHeader() {
         return this.$store.state.global.apiHeader
       }
     },
@@ -77,6 +79,8 @@
           .then((res) => {
             this.getTodos()
             this.todo = {}
+            this.notifyAlertType = 'positive'
+            this.notifyAlertMessage = "Votre tache a été enregistrée!"
           })
       },
       putTodo: function(id, index) {
@@ -86,14 +90,28 @@
           }, this.apiHeader)
           .then((res) => {
             this.getTodos()
+            this.notifyAlertType = 'positive'
+            this.notifyAlertMessage = "Votre tache a été mise à jour!"
           })
       },
       delTodo: function(id) {
         this.$axios.delete('/api/todolist/' + id, this.apiHeader)
           .then((res) => {
             this.getTodos()
+            this.notifyAlertType = 'positive'
+            this.notifyAlertMessage = "Votre tache a été supprimée!"
           })
       }
+    },
+    watch: {
+    notifyAlertMessage: function () {
+      this.$q.notify({
+        type: this.notifyAlertType,
+        message: this.notifyAlertMessage,
+        position: 'center',
+        timeout: 100
+      })
     }
+  }
   }
 </script>

@@ -27,6 +27,8 @@ export default {
   name: 'LayoutDefault',
   data () {
     return {
+      notifyAlertType: '',
+      notifyAlertMessage: ''
     }
   },
   computed: {
@@ -39,7 +41,19 @@ export default {
     logout: function () {
       this.$q.localStorage.remove('token')
       this.$store.dispatch('global/disconnected')
+      this.notifyAlertType = 'positive'
+      this.notifyAlertMessage = 'A bientôt!'
       this.$router.push('/')
+    }
+  },
+  watch: {
+    notifyAlertMessage: function () {
+      this.$q.notify({
+        type: this.notifyAlertType,
+        message: this.notifyAlertMessage,
+        position: 'center',
+        timeout: 1000
+      })
     }
   }
 }

@@ -34,7 +34,7 @@ module.exports = {
             }
             if (!password) {
                 // ctx.body = 'please provide the password'
-                ctx.throw(400, 'please provide the password');
+                ctx.throw(400, 'Vous devez saisir un mot de passe');
             }
 
             const user = await ctx.db.User.findOne({
@@ -44,7 +44,7 @@ module.exports = {
             });
 
             if (!user) {
-                ctx.throw(500, 'Vous devez saisir un mot de passe');
+                ctx.throw(500, `L'utilisateur n'existe pas!`);
             }
 
             const matched = UtilService.comparedPassword(password, user.password);
