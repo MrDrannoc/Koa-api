@@ -7,10 +7,10 @@ module.exports = {
             let {email, password} = ctx.request.body;
 
             if(!email) {
-                ctx.throw(400, 'please provide the email');
+                ctx.throw(400, 'Vous devez saisir un E-mail');
             }
             if(!password) {
-                ctx.throw(400, 'please provide the password');
+                ctx.throw(400, 'Vous devez saisir un mot de passe');
             }
 
             const encryptedPassword = await UtilService.hashPassword(password);
@@ -18,7 +18,7 @@ module.exports = {
                 email,
                 password : encryptedPassword
             });
-            ctx.body = 'Signup successful!';
+            ctx.body = 'Utilisateur enregistrée avec succès';
         }
         catch(err) {
             ctx.throw(500, err);
@@ -30,9 +30,10 @@ module.exports = {
             let { email, password } = ctx.request.body;
 
             if (!email) {
-                ctx.throw(400, 'please provide the email');
+                ctx.throw(400, 'Vous devez saisir un E-mail');
             }
             if (!password) {
+                // ctx.body = 'please provide the password'
                 ctx.throw(400, 'please provide the password');
             }
 
@@ -43,7 +44,7 @@ module.exports = {
             });
 
             if (!user) {
-                ctx.throw(500, 'unable to process request');
+                ctx.throw(500, 'Vous devez saisir un mot de passe');
             }
 
             const matched = UtilService.comparedPassword(password, user.password);
@@ -57,7 +58,7 @@ module.exports = {
                 ctx.body = {token};
 
             } else {
-                ctx.throw(500, 'invalid password');
+                ctx.throw(500, 'Mot de passe invalide');
             }
         }
         catch (err) {

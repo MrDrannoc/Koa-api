@@ -10,7 +10,8 @@
           Todolist application
           <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
         </q-toolbar-title>
-        <router-link to="/todos">Todos</router-link>
+        <router-link v-if="connected" to="/todos">Todos</router-link>
+        <q-btn v-if="connected" @click="logout">Logout</q-btn>
       </q-toolbar>
     </q-layout-header>
     <q-page-container>
@@ -26,6 +27,19 @@ export default {
   name: 'LayoutDefault',
   data () {
     return {
+    }
+  },
+  computed: {
+  // récuperer du state du store
+    connected () {
+      return this.$store.state.global.connected
+    }
+  },
+  methods: {
+    logout: function () {
+      this.$q.localStorage.remove('token')
+      this.$store.dispatch('global/disconnected')
+      this.$router.push('/')
     }
   }
 }

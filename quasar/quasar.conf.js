@@ -73,14 +73,17 @@ module.exports = function (ctx) {
         'QItemMain',
         'QItemSide',
         'QInput',
-        'QTable'
+        'QModal',
+        'QTable',
+        'Notify'
       ],
       directives: [
         'Ripple'
       ],
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'LocalStorage'
       ]
     },
     // animations: 'all' --- includes all animations

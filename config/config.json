@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "Wcs@8503",
     "database": "koa_api_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
