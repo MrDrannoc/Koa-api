@@ -1,23 +1,56 @@
 <template>
   <q-page>
-    <q-input v-model="userLogin.email" type="email" placeholder="E-mail" />
-    <q-input v-model="userLogin.password" type="password" placeholder="Password" />
-    <q-btn @click="opened = true">Créer un utilisateur</q-btn>
-    <q-btn @click="login">Se connecter</q-btn>
-    <q-modal v-model="opened">
-      <h4>Saisir votre utilisateur</h4>
-      <form @submit.prevent="signup">
+    <q-modal v-model="opened" class="modal">
+      <!-- <form @submit.prevent="signup">
         <q-input v-model="userSignup.email" type="email" placeholder="E-mail" />
         <q-input v-model="userSignup.password" type="password" placeholder="Password" />
         <q-btn>Enregistrer</q-btn>
       </form>
-      <q-btn color="primary" @click="opened = false" label="Close" />
+      <q-btn color="primary" @click="opened = false" label="Close" /> -->
+      <q-card inline style="width: 400px">
+        <q-card-title class="text-center bg-primary text-white">
+          Saisir votre utilisateur
+        </q-card-title>
+        <q-card-separator />
+        <q-card-main class="cardMain">
+          <q-input v-model="userSignup.email" type="email" placeholder="E-mail" />
+          <q-input v-model="userSignup.password" type="password" placeholder="Password" />
+        </q-card-main>
+        <q-card-separator />
+        <q-card-actions class="bg-primary text-white">
+          <q-btn @click="opened = false" flat>Fermer</q-btn>
+          <q-btn @click="signup" flat class="saveBtn">Enregistrer</q-btn>
+        </q-card-actions>
+      </q-card>
     </q-modal>
+    <q-card inline class="q-ma-sm card">
+      <q-card-title class="text-center bg-primary text-white">
+        Enregistrement / Connexion
+      </q-card-title>
+      <q-card-separator />
+      <q-card-main class="cardMain">
+        <q-input v-model="userLogin.email" type="email" placeholder="E-mail" />
+        <q-input v-model="userLogin.password" type="password" placeholder="Password" />
+      </q-card-main>
+      <q-card-separator />
+      <q-card-actions class="bg-primary text-white">
+        <q-btn @click="opened = true" flat>Créer un utilisateur</q-btn>
+        <q-btn @click="login" flat>Se connecter</q-btn>
+      </q-card-actions>
+    </q-card>
   </q-page>
 </template>
 
-<style>
-
+<style lang="stylus" scoped>
+.card
+  position absolute
+  width 310px
+  left 50vw
+  margin-left -160px
+  top 5vh
+.saveBtn
+  position absolute
+  right 0px
 </style>
 
 <script>
@@ -62,7 +95,7 @@
             this.notifyAlertMessage = `Bienvenue ${user.email}`
             setTimeout(() => {
               this.$router.push('todos')
-            }, 2000);
+            }, 1000);
           })
           .catch((err) => {
             this.notifyAlertType = 'negative'

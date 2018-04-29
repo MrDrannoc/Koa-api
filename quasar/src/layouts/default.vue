@@ -10,8 +10,7 @@
           Todolist application
           <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
         </q-toolbar-title>
-        <router-link v-if="connected" to="/todos">Todos</router-link>
-        <q-btn v-if="connected" @click="logout">Logout</q-btn>
+        <q-btn color="white" text-color="primary" v-if="connected" @click="logout">Logout</q-btn>
       </q-toolbar>
     </q-layout-header>
     <q-page-container>
